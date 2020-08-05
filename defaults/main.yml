@@ -1,9 +1,12 @@
 ---
 ### Version and download settings
-keycloak_version: 7.0.0
+keycloak_version: 10.0.2
 keycloak_archive: keycloak-{{ keycloak_version }}.zip
 keycloak_url: https://downloads.jboss.org/keycloak/{{
               keycloak_version }}/{{ keycloak_archive }}
+mysql_jdbc_connector_version: 8.0.19
+mysql_jdbc_connector_url: https://repo1.maven.org/maven2/mysql/mysql-connector-java/{{
+              mysql_jdbc_connector_version }}/mysql-connector-java-{{ mysql_jdbc_connector_version }}.jar
 keycloak_local_download_dest: "{{ \"~/keycloak_download\" | expanduser }}"
 
 ### Install location and service settings
@@ -12,6 +15,7 @@ keycloak_jboss_home: "{{ keycloak_dest }}/keycloak-{{ keycloak_version }}"
 keycloak_config_dir: "{{ keycloak_jboss_home }}/standalone/configuration"
 keycloak_service_user: keycloak
 keycloak_service_group: keycloak
+keycloak_migration_dir: "{{ keycloak_config_dir}}/realm-config"
 
 ### Keycloak configuration settings
 keycloak_bind_address: 0.0.0.0
@@ -20,6 +24,17 @@ keycloak_https_port: 8443
 keycloak_management_http_port: 9990
 keycloak_management_https_port: 9993
 
+### MySQL settings
+mysql_host: localhost
+mysql_port: 3306
+mysql_jdbc_params:
+mysql_root_user: root
+mysql_root_password:
+mysql_keycloak_database: keycloak
+mysql_keycloak_user: keycloak
+mysql_keycloak_password:
+### Configurtion source settings
+keycloak_realm_config_source: realm-config/
 
 keycloak_admin_user: admin
 
@@ -47,8 +62,11 @@ keycloak_jboss_config_connect_timeout: 5000
 # to complete each command executed in configuration file (default: 1 minute)
 keycloak_jboss_config_command_timeout: 60
 
+# Create the keycloak mysql database
+keycloak_create_mysql_database: true
+
 # Configure the firewall to allow access to Keycloak public ports
-keycloak_configure_firewall: true
+keycloak_configure_firewall: false
 
 # Configure the JAVA_OPTS used by the Keycloak service
 keycloak_java_opts: "-Xms1024m -Xmx20480m -XX:MaxPermSize=768m"

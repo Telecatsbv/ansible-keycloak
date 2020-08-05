@@ -52,9 +52,10 @@
       package:
         name: "{{ item }}"
       loop:
-        - java-1.8.0-openjdk-headless
+        - openjdk-8-jdk
         - unzip
-        - pyOpenSSL
+        - python3-openssl
+        - python3-pymysql
       become: yes
 
     - name: create Keycloak service user/group
@@ -125,6 +126,62 @@
       become: yes
       tags:
         - skip_ansible_lint
+
+    - name: copy realm config to target
+      copy:
+        src: "{{ keycloak_realm_config_source }}"
+        dest: "{{ keycloak_migration_dir }}"
+        owner: "{{ keycloak_service_user }}"
+        group: "{{ keycloak_service_group }}"
+      become: yes
+
+    - name: Install mysql jdbc connector
+      block:
+        - name: Create mysql module directory
+          file:
+            dest: "{{ keycloak_jboss_home }}/modules/system/layers/base/com/mysql/jdbc/main"
+            state: directory
+            owner: "{{ keycloak_service_user }}"
+            group: "{{ keycloak_service_group }}"
+          become: yes
+        - name: Download mysql jdbc connector
+          get_url:
+            url: "{{ mysql_jdbc_connector_url }}"
+            dest: "{{ keycloak_jboss_home }}/modules/system/layers/base/com/mysql/jdbc/main/mysql-connector-java.jar"
+            owner: "{{ keycloak_service_user }}"
+            group: "{{ keycloak_service_group }}"
+          become: yes
+        - name: Configure mysql module.xml
+          copy:
+            src: mysql/module.xml
+            dest: "{{ keycloak_jboss_home }}/modules/system/layers/base/com/mysql/jdbc/main/module.xml"
+            owner: "{{ keycloak_service_user }}"
+            group: "{{ keycloak_service_group }}"
+          become: yes
+
+    - name: Create mysql database
+      block:
+        - name: Create keycloak database
+          mysql_db:
+            name: "{{ keycloak_mysql_database }}"
+            encoding: utf8
+            collation: utf8_general_ci
+            login_user: "{{ mysql_root_user }}"
+            login_password: "{{ mysql_root_password }}"
+            state: present
+          become: yes
+        - name: Create keycloak database user
+          mysql_user:
+            name: "{{ keycloak_mysql_user }}"
+            password: "{{ keycloak_mysql_password }}"
+            host: localhost
+            priv: 'keycloak.*:ALL'
+            login_user: "{{ mysql_root_user }}"
+            login_password: "{{ mysql_root_password }}"
+            state: present
+          become: yes
+      when:
+        - keycloak_create_mysql_database
 
     - name: validate and set PKCS12 variables
       block:
@@ -233,10 +290,10 @@
       when:
         - keycloak_configure_firewall
 
-    - name: configure sysconfig file for keycloak service
+    - name: configure defaults file for keycloak service
       template:
-        src: keycloak-sysconfig.j2
-        dest: /etc/sysconfig/keycloak
+        src: keycloak-defaults.j2
+        dest: /etc/defaults/keycloak
         owner: root
         group: root
         mode: 0644
@@ -255,6 +312,35 @@
       notify:
         - reload systemd
         - restart keycloak
+
+    - name: configure mysql database Keycloak server configuration file
+      become: yes
+      block:
+        - name: create jboss-cli.sh datasource command file
+          template:
+            src: configure-datasource.cli.j2
+            dest: "{{ keycloak_config_dir }}/configure-datasource.cli"
+            owner: root
+            group: root
+            mode: 0600
+        - name: apply keycloak mysql database configuration
+          command:
+          args:
+            argv:
+              - "{{ keycloak_jboss_home }}/bin/jboss-cli.sh"
+              - --file={{ keycloak_config_dir }}/configure-datasource.cli
+          notify:
+            - restart keycloak
+          tags:
+            - skip_ansible_lint
+        - name: change owner of configuration files back to keycloak
+          file:
+            path: "{{ keycloak_jboss_home }}/standalone"
+            state: directory
+            recurse: yes
+            owner: "{{ keycloak_service_user }}"
+            group: "{{ keycloak_service_group }}"
+            mode: '0755'
 
     # Force the handlers to run now, as keycloak needs to be running before
     # the next tasks are executed.
