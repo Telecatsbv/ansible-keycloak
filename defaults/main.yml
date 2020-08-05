@@ -15,7 +15,7 @@ keycloak_jboss_home: "{{ keycloak_dest }}/keycloak-{{ keycloak_version }}"
 keycloak_config_dir: "{{ keycloak_jboss_home }}/standalone/configuration"
 keycloak_service_user: keycloak
 keycloak_service_group: keycloak
-keycloak_migration_dir: "{{ keycloak_config_dir}}/realm-config"
+keycloak_migration_dir: "{{ keycloak_config_dir }}/realm-config"
 
 ### Keycloak configuration settings
 keycloak_bind_address: 0.0.0.0

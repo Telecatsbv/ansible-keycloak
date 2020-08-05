@@ -293,7 +293,7 @@
     - name: configure defaults file for keycloak service
       template:
         src: keycloak-defaults.j2
-        dest: /etc/defaults/keycloak
+        dest: /etc/default/keycloak
         owner: root
         group: root
         mode: 0644
