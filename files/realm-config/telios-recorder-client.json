@@ -1,0 +1,483 @@
+{
+  "id": "telecats",
+  "realm": "telecats",
+  "roles": {
+    "realm": [
+      {
+        "id": "a2350d85-938e-440c-847c-35086fe0f1d8",
+        "name": "ROLE_ADMIN",
+        "description": "Telecats administrator role",
+        "composite": true,
+        "composites": {
+          "realm": ["ROLE_MONITOR"],
+          "client": {
+            "telios-call-recorder": [
+              "recordings.report",
+              "recordings.query",
+              "recordings.query-by-project",
+              "recordings.view",
+              "recordings.control",
+              "projects.create",
+              "projects.query",
+              "projects.view",
+              "projects.edit",
+              "projects.delete",
+              "extensions.create",
+              "extensions.query",
+              "extensions.query-by-project",
+              "extensions.view",
+              "extensions.edit",
+              "extensions.delete",
+              "agent-groups.create",
+              "agent-groups.query",
+              "agent-groups.query-by-project",
+              "agent-groups.view",
+              "agent-groups.edit",
+              "agent-groups.delete",
+              "agents.create",
+              "agents.query",
+              "agents.query-by-project",
+              "agents.view",
+              "agents.edit",
+              "agents.delete",
+              "system-settings.read",
+              "system-settings.edit"
+            ]
+          }
+        },
+        "clientRole": false,
+        "containerId": "telecats",
+        "attributes": {}
+      }
+    ],
+    "client": {
+      "telios-call-recorder": [
+        {
+          "id": "13c7db06-82c2-423c-a705-7b85fba6d50d",
+          "name": "recordings.report",
+          "description": "Privilege to view a recording report",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "a83a4523-abb2-4e32-938f-5bbd86f400e7",
+          "name": "recordings.query",
+          "description": "Privilege to view all recordings",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "36afa33e-4c83-42b1-bc42-01c61f7b2f18",
+          "name": "recordings.query-by-project",
+          "description": "Privilege to view all recordings of a specified project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "b9161bd4-9696-4c8f-bb6c-1cc46255aaac",
+          "name": "recordings.view",
+          "description": "Privilege to view a recording",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "2a2467de-3aaa-4ce1-a949-03c01e2b6dd8",
+          "name": "recordings.register-event",
+          "description": "Privilege to register a recording event",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "1013c6a8-3f16-452b-a67d-362968645a12",
+          "name": "recordings.control",
+          "description": "Privilege to control (pause & resume) a recording",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "a9e4da75-745b-4173-a9ee-ebc0f3929973",
+          "name": "recordings.stream",
+          "description": "Privilege to (live) stream a recording",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "c1e32252-e761-428b-bb86-ea1540d2df19",
+          "name": "recordings.download",
+          "description": "Privilege to download a recording",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "8aafcb79-5e55-4337-8ef8-66fd74695a60",
+          "name": "projects.create",
+          "description": "Privilege to create a new project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "6ca8cba7-a85c-4b14-afdf-7fc66c931eec",
+          "name": "projects.query",
+          "description": "Privilege to view all projects",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "e43a40e1-25b0-41ae-8fea-ddcc7169df19",
+          "name": "projects.view",
+          "description": "Privilege to view a project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "ed050767-1eac-4cd9-abb9-0b6e50b97cda",
+          "name": "projects.edit",
+          "description": "Privilege to edit a project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "4b3918a2-0aff-4bca-a117-9a1faaf0d931",
+          "name": "projects.delete",
+          "description": "Privilege to delete a project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "77fdc682-5bfb-475a-99be-094be839523c",
+          "name": "extensions.create",
+          "description": "Privilege to create an extension",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "30dd8c22-be34-472e-a9bb-c66ba88794a7",
+          "name": "extensions.query",
+          "description": "Privilege to view all extensions",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "9c1ad4ce-02af-4041-b4a0-1b9b0dfb2633",
+          "name": "extensions.query-by-project",
+          "description": "Privilege to view all extension of a specified project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "1225aa9b-adb3-49a0-8ee4-2632067014ae",
+          "name": "extensions.view",
+          "description": "Privilege to view an extension",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "09047d00-af31-460d-9d9a-0d610bd00a0b",
+          "name": "extensions.edit",
+          "description": "Privilege to edit an extension",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "8c4241b9-2951-4b3f-acdc-9d84dc57bf3e",
+          "name": "extensions.delete",
+          "description": "Privilege to delete an extension",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "4804cba4-c65f-4b6f-a8ba-4454ac8fe72f",
+          "name": "agent-groups.create",
+          "description": "Privilege to create an agent group",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "fd272758-98ad-450b-9e34-63a2beccb493",
+          "name": "agent-groups.query",
+          "description": "Privilege to view all agent groups",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "b81cc457-77c3-4e86-b4ab-9dfcfb359338",
+          "name": "agent-groups.query-by-project",
+          "description": "Privilege to view all agent groups of a specified project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "83017d2c-322b-4359-9fba-56c5c92f2e3b",
+          "name": "agent-groups.view",
+          "description": "Privilege to view an agent group",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "b64b0a6f-0e11-44ab-8393-d45c35b3aef5",
+          "name": "agent-groups.edit",
+          "description": "Privilege to edit an agent group",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "08961b6f-3c09-48e3-846c-507087e6fba8",
+          "name": "agent-groups.delete",
+          "description": "Privilege to delete an agent group",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "9e35fa55-68d1-44d8-955b-dfa648f3cd4c",
+          "name": "agents.create",
+          "description": "Privilege to create an agent",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "0aab918f-60b1-4c9d-b722-747697e3a242",
+          "name": "agents.query",
+          "description": "Privilege to view all agents",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "6c4dd753-2c82-420f-9e9e-6508a40765b8",
+          "name": "agents.query-by-project",
+          "description": "Privilege to view all agents of a specified project",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "9ab62cc5-b963-4a78-bdb1-9f63c41f6d28",
+          "name": "agents.view",
+          "description": "Privilege to view an agent",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "34ee0ea3-40c5-4bef-9d1d-a8e2d7e0d72c",
+          "name": "agents.edit",
+          "description": "Privilege to edit an agent",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "013c07f1-11d6-4dbc-aed8-b83c932d070e",
+          "name": "agents.delete",
+          "description": "Privilege to delete an agent",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "00762ebd-38d1-48f1-baf4-6a34068e8f32",
+          "name": "health.read",
+          "description": "Privilege to read the health report",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "38e4cf37-e050-4d08-8ee8-de35bb06415a",
+          "name": "system-settings.read",
+          "description": "Privilege to read the system settings",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "10ffb2eb-74a2-4cdb-b142-153c032aabe5",
+          "name": "system-settings.edit",
+          "description": "Privilege to edit the system settings",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "e14b6fe4-b6b8-11ea-b3de-0242ac130004",
+          "name": "ROLE_PROJECT_ADMIN",
+          "description": "Telios Call Recorder project administrator role",
+          "composite": true,
+          "composites": {
+            "client": {
+              "telios-call-recorder": [
+                "recordings.query-by-project",
+                "recordings.view",
+                "recordings.stream",
+                "recordings.download",
+                "projects.view",
+                "projects.edit",
+                "extensions.create",
+                "extensions.query-by-project",
+                "extensions.view",
+                "extensions.edit",
+                "extensions.delete",
+                "agent-groups.create",
+                "agent-groups.query-by-project",
+                "agent-groups.view",
+                "agent-groups.edit",
+                "agent-groups.delete",
+                "agents.create",
+                "agents.query-by-project",
+                "agents.view",
+                "agents.edit",
+                "agents.delete",
+                "system-settings.read"
+              ]
+            }
+          },
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        },
+        {
+          "id": "44143d43-08ea-42f4-9eb8-05db2fc69b74",
+          "name": "ROLE_AGENT",
+          "description": "Contact center agent role",
+          "composite": true,
+          "composites": {
+            "client": {
+              "telios-call-recorder": [
+                "recordings.control"
+              ]
+            }
+          },
+          "clientRole": true,
+          "containerId": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+          "attributes": {}
+        }
+      ]
+    }
+  },
+  "clients": [
+    {
+      "id": "1eabef67-6473-4ba8-b07c-14bdbae4aaed",
+      "clientId": "telios-call-recorder",
+      "rootUrl": "http://localhost:8601",
+      "adminUrl": "http://localhost:8601",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "telios-call-recorder",
+      "redirectUris": [
+        "http://localhost:*",
+        "https://localhost:*",
+        "http://127.0.0.1:*",
+        "https://127.0.0.1:*",
+        "dev.localhost.ionic:*"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "saml.assertion.signature": "false",
+        "saml.force.post.binding": "false",
+        "saml.multivalued.roles": "false",
+        "saml.encrypt": "false",
+        "saml.server.signature": "false",
+        "saml.server.signature.keyinfo.ext": "false",
+        "exclude.session.state.from.auth.response": "false",
+        "saml_force_name_id_format": "false",
+        "saml.client.signature": "false",
+        "tls.client.certificate.bound.access.tokens": "false",
+        "saml.authnstatement": "false",
+        "display.on.consent.screen": "false",
+        "saml.onetimeuse.condition": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "web-origins",
+        "telecats",
+        "role_list",
+        "roles",
+        "profile",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    }
+  ]
+}
+
