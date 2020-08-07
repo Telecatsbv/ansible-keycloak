@@ -1,8 +1,8 @@
 embed-server --server-config=standalone.xml --std-out=echo
 /subsystem=datasources/data-source=KeycloakDS: remove()
-/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:mysql://{{ mysql_host }}:{{ mysql_port}}/{{ mysql_keycloak_database }}{{ mysql_jdbc_params }}, driver-name=mysql)
-/subsystem=datasources/data-source=KeycloakDS: write-attribute(name=user-name, value={{ mysql_keycloak_user }})
-/subsystem=datasources/data-source=KeycloakDS: write-attribute(name=password, value={{ mysql_keycloak_password }})
+/subsystem=datasources/data-source=KeycloakDS: add(jndi-name=java:jboss/datasources/KeycloakDS,enabled=true,use-java-context=true,use-ccm=true, connection-url=jdbc:mysql://{{ mysql_host }}:{{ mysql_port}}/{{ keycloak_mysql_database }}{{ mysql_jdbc_params }}, driver-name=mysql)
+/subsystem=datasources/data-source=KeycloakDS: write-attribute(name=user-name, value={{ keycloak_mysql_user }})
+/subsystem=datasources/data-source=KeycloakDS: write-attribute(name=password, value={{ keycloak_mysql_password }})
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=check-valid-connection-sql, value="SELECT 1")
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=background-validation, value=true)
 /subsystem=datasources/data-source=KeycloakDS: write-attribute(name=background-validation-millis, value=60000)

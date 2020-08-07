@@ -30,9 +30,9 @@ mysql_port: 3306
 mysql_jdbc_params:
 mysql_root_user: root
 mysql_root_password:
-mysql_keycloak_database: keycloak
-mysql_keycloak_user: keycloak
-mysql_keycloak_password:
+keycloak_mysql_database: keycloak
+keycloak_mysql_user: keycloak
+keycloak_mysql_password:
 ### Configurtion source settings
 keycloak_realm_config_source: realm-config/
 
