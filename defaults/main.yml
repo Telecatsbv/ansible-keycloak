@@ -53,6 +53,8 @@ keycloak_archive_on_target: false
 
 # Number of seconds to wait for Keycloak to start (default: 5 minutes)
 keycloak_startup_timeout: 300
+# Number of seconds to wait before check Keycloak started (default: 5 seconds)
+keycloak_startup_delay: 5
 
 # Number of milliseconds to wait for jboss configuration utility
 # to connect to wildfly server (default: 5 seconds)

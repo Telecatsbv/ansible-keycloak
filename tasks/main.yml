@@ -358,6 +358,7 @@
           wait_for:
             port: "{{ keycloak_management_http_port }}"
             timeout: "{{ keycloak_startup_timeout }}"
+            delay: "{{ keycloak_startup_delay }}"
         - name: create jboss-cli.sh command file
           template:
             src: standalone-tls-config.cli.j2
