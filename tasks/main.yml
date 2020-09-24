@@ -1,5 +1,4 @@
 ---
-
 - name: check for an existing deployment
   stat:
     path: "{{ keycloak_jboss_home }}"
@@ -168,6 +167,7 @@
             collation: utf8_general_ci
             login_user: "{{ mysql_root_user }}"
             login_password: "{{ mysql_root_password }}"
+            login_unix_socket: /var/run/mysqld/mysqld.sock
             state: present
           become: yes
         - name: Create keycloak database user
@@ -178,6 +178,7 @@
             priv: 'keycloak.*:ALL'
             login_user: "{{ mysql_root_user }}"
             login_password: "{{ mysql_root_password }}"
+            login_unix_socket: /var/run/mysqld/mysqld.sock
             state: present
           become: yes
       when:
